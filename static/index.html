@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudBox Drive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <section class="hero-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Cloud-Based File Storage System</p>
+        <h1>CloudBox Drive</h1>
+        <p class="lede">
+          Upload, organize, download, and share files through a secure mini cloud drive experience.
+        </p>
+        <div class="hero-grid">
+          <article>
+            <span>Scalable</span>
+            <p>Storage abstraction built to map cleanly to Firebase.</p>
+          </article>
+          <article>
+            <span>Secure</span>
+            <p>Authenticated access, isolated user data, and expiring share links.</p>
+          </article>
+          <article>
+            <span>Reliable</span>
+            <p>File metadata is tracked in SQLite with persistent object storage on disk.</p>
+          </article>
+        </div>
+      </div>
+      <div class="hero-orb hero-orb-a"></div>
+      <div class="hero-orb hero-orb-b"></div>
+    </section>
+
+    <section class="app-panel">
+      <div id="authCard" class="card auth-card">
+        <div class="card-header">
+          <p class="section-label">Secure Access</p>
+          <h2>Access your workspace</h2>
+          <p>Sign in to your account or create a new one to start storing files securely.</p>
+        </div>
+        <div class="auth-switch">
+          <button id="showSignInBtn" class="ghost auth-tab active" type="button">Sign In</button>
+          <button id="showSignUpBtn" class="ghost auth-tab" type="button">Sign Up</button>
+        </div>
+        <form id="signInForm" class="stack">
+          <label>
+            <span>Username</span>
+            <input type="text" name="username" autocomplete="username" required>
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password" autocomplete="current-password" required>
+          </label>
+          <button type="submit">Log In</button>
+        </form>
+        <form id="signUpForm" class="stack hidden">
+          <label>
+            <span>Username</span>
+            <input type="text" name="username" autocomplete="username" required>
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password" autocomplete="new-password" required>
+          </label>
+          <label>
+            <span>Confirm Password</span>
+            <input type="password" name="confirm_password" autocomplete="new-password" required>
+          </label>
+          <button type="submit">Create Account</button>
+        </form>
+      </div>
+
+      <div id="dashboard" class="dashboard hidden">
+        <div class="toolbar">
+          <div>
+            <p class="section-label">Dashboard</p>
+            <h2 id="welcomeText">Your Drive</h2>
+          </div>
+          <button id="logoutBtn" class="ghost">Sign Out</button>
+        </div>
+
+        <div class="card uploader-card">
+          <div class="card-header">
+            <h3>Upload a file</h3>
+            <p>Files are sent to the cloud storage layer and tracked in the metadata database.</p>
+          </div>
+          <div class="upload-row">
+            <input id="fileInput" type="file">
+            <button id="uploadBtn">Upload</button>
+          </div>
+          <p class="hint">Maximum upload size: 10 MB per file.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Stored files</h3>
+            <p>Download them anytime or generate a temporary share link.</p>
+          </div>
+          <div id="fileList" class="file-list"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
